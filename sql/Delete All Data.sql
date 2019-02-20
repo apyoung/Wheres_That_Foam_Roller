@@ -1,0 +1,13 @@
+SET FOREIGN_KEY_CHECKS = 0;
+DELETE FROM itemCategory;
+DELETE FROM item;
+DELETE FROM itemReview;
+DELETE FROM itemReview;
+DELETE FROM carries;
+DELETE FROM store;
+DELETE FROM owns;
+DELETE FROM company;
+DELETE FROM storeReview;
+DELETE FROM review;
+DELETE FROM reviewer;
+SET FOREIGN_KEY_CHECKS = 1;
