@@ -7,14 +7,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Vector;
 
 public class InsertData {
 
 	public void build() {
-		String[] files = new String[2];
-		files[0] = "src/sql/Create Tables.sql";
-		files[1] = "src/sql/Insert Data.sql";
 		try {
 			for (int j = 0; j < 1; j++) {
 				System.out.println("Making tables");
