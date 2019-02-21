@@ -7,7 +7,8 @@
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
-
+.idea/
+out/
 # Generated files
 .idea/**/contentModel.xml
 
@@ -66,7 +67,6 @@ fabric.properties
 .idea/caches/build_file_checksums.ser
 
 # Eclipse .gitignore
-.classpath
 .metadata
 bin/
 tmp/
