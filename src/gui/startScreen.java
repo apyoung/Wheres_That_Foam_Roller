@@ -1,5 +1,8 @@
 package gui;
 
+import com.intellij.uiDesigner.core.GridConstraints;
+import com.intellij.uiDesigner.core.GridLayoutManager;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -109,142 +112,100 @@ public class startScreen extends JFrame {
      */
     private void $$$setupUI$$$() {
         startPanel = new JPanel();
-        startPanel.setLayout(
-            new com.intellij.uiDesigner.core.GridLayoutManager(10, 2, new Insets(0, 0, 0, 0), -1,
-                -1));
+        startPanel.setLayout(new GridLayoutManager(10, 2, new Insets(0, 0, 0, 0), -1, -1));
         showAllItemsButton = new JButton();
         showAllItemsButton.setText("Show All Items");
         startPanel.add(showAllItemsButton,
-            new com.intellij.uiDesigner.core.GridConstraints(8, 1, 1, 1,
-                com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER,
-                com.intellij.uiDesigner.core.GridConstraints.FILL_NONE,
-                com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK
-                    | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW,
-                com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null,
-                new Dimension(125, 50), null, 0, false));
+            new GridConstraints(8, 1, 1, 1, GridConstraints.ANCHOR_CENTER,
+                GridConstraints.FILL_NONE,
+                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+                GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(125, 50), null, 0, false));
         searchItemsButton = new JButton();
         searchItemsButton.setHorizontalTextPosition(0);
         searchItemsButton.setText("Search Items");
         startPanel.add(searchItemsButton,
-            new com.intellij.uiDesigner.core.GridConstraints(8, 0, 1, 1,
-                com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER,
-                com.intellij.uiDesigner.core.GridConstraints.FILL_NONE,
-                com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK
-                    | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW,
-                com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null,
-                new Dimension(125, 50), null, 0, false));
+            new GridConstraints(8, 0, 1, 1, GridConstraints.ANCHOR_CENTER,
+                GridConstraints.FILL_NONE,
+                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+                GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(125, 50), null, 0, false));
         searchStoresButton = new JButton();
         searchStoresButton.setText("Search Stores");
         startPanel.add(searchStoresButton,
-            new com.intellij.uiDesigner.core.GridConstraints(7, 0, 1, 1,
-                com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER,
-                com.intellij.uiDesigner.core.GridConstraints.FILL_NONE,
-                com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK
-                    | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW,
-                com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null,
-                new Dimension(125, 50), null, 0, false));
+            new GridConstraints(7, 0, 1, 1, GridConstraints.ANCHOR_CENTER,
+                GridConstraints.FILL_NONE,
+                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+                GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(125, 50), null, 0, false));
         showAllStoresButton = new JButton();
         showAllStoresButton.setText("Show All Stores");
         startPanel.add(showAllStoresButton,
-            new com.intellij.uiDesigner.core.GridConstraints(7, 1, 1, 1,
-                com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER,
-                com.intellij.uiDesigner.core.GridConstraints.FILL_NONE,
-                com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK
-                    | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW,
-                com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null,
-                new Dimension(125, 50), null, 0, false));
+            new GridConstraints(7, 1, 1, 1, GridConstraints.ANCHOR_CENTER,
+                GridConstraints.FILL_NONE,
+                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+                GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(125, 50), null, 0, false));
         showAllCategoriesButton = new JButton();
         showAllCategoriesButton.setText("Show All Categories");
         startPanel.add(showAllCategoriesButton,
-            new com.intellij.uiDesigner.core.GridConstraints(9, 1, 1, 1,
-                com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER,
-                com.intellij.uiDesigner.core.GridConstraints.FILL_NONE,
-                com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK
-                    | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW,
-                com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null,
-                new Dimension(125, 50), null, 0, false));
+            new GridConstraints(9, 1, 1, 1, GridConstraints.ANCHOR_CENTER,
+                GridConstraints.FILL_NONE,
+                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+                GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(125, 50), null, 0, false));
         searchCategoriesButton = new JButton();
         searchCategoriesButton.setText("Search Categories");
         startPanel.add(searchCategoriesButton,
-            new com.intellij.uiDesigner.core.GridConstraints(9, 0, 1, 1,
-                com.intellij.uiDesigner.core.GridConstraints.ANCHOR_CENTER,
-                com.intellij.uiDesigner.core.GridConstraints.FILL_NONE,
-                com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_SHRINK
-                    | com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_CAN_GROW,
-                com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null,
-                new Dimension(125, 50), null, 0, false));
+            new GridConstraints(9, 0, 1, 1, GridConstraints.ANCHOR_CENTER,
+                GridConstraints.FILL_NONE,
+                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+                GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(125, 50), null, 0, false));
         startPanelLabel = new JLabel();
         Font startPanelLabelFont =
             this.$$$getFont$$$(null, Font.BOLD, 12, startPanelLabel.getFont());
         if (startPanelLabelFont != null)
             startPanelLabel.setFont(startPanelLabelFont);
         startPanelLabel.setText("Choose Search Method:");
-        startPanel.add(startPanelLabel, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 2,
-            com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST,
-            com.intellij.uiDesigner.core.GridConstraints.FILL_NONE,
-            com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED,
-            com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 2,
-            false));
+        startPanel.add(startPanelLabel,
+            new GridConstraints(0, 0, 1, 2, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
+                GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null,
+                null, 2, false));
         urlLabel = new JLabel();
         urlLabel.setText("SQL URL");
-        startPanel.add(urlLabel, new com.intellij.uiDesigner.core.GridConstraints(1, 0, 1, 2,
-            com.intellij.uiDesigner.core.GridConstraints.ANCHOR_SOUTH,
-            com.intellij.uiDesigner.core.GridConstraints.FILL_NONE,
-            com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED,
-            com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0,
-            false));
+        startPanel.add(urlLabel,
+            new GridConstraints(1, 0, 1, 2, GridConstraints.ANCHOR_SOUTH, GridConstraints.FILL_NONE,
+                GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null,
+                null, 0, false));
         urlField = new JTextField();
-        startPanel.add(urlField, new com.intellij.uiDesigner.core.GridConstraints(2, 0, 1, 2,
-            com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST,
-            com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL,
-            com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW,
-            com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null,
-            new Dimension(150, -1), null, 0, false));
+        startPanel.add(urlField, new GridConstraints(2, 0, 1, 2, GridConstraints.ANCHOR_WEST,
+            GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW,
+            GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
         usernameLabel = new JLabel();
         usernameLabel.setText("SQL Username");
-        startPanel.add(usernameLabel, new com.intellij.uiDesigner.core.GridConstraints(3, 0, 1, 1,
-            com.intellij.uiDesigner.core.GridConstraints.ANCHOR_SOUTH,
-            com.intellij.uiDesigner.core.GridConstraints.FILL_NONE,
-            com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED,
-            com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0,
-            false));
+        startPanel.add(usernameLabel,
+            new GridConstraints(3, 0, 1, 1, GridConstraints.ANCHOR_SOUTH, GridConstraints.FILL_NONE,
+                GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null,
+                null, 0, false));
         passwordLabel = new JLabel();
         passwordLabel.setText("SQL Password");
-        startPanel.add(passwordLabel, new com.intellij.uiDesigner.core.GridConstraints(3, 1, 1, 1,
-            com.intellij.uiDesigner.core.GridConstraints.ANCHOR_SOUTH,
-            com.intellij.uiDesigner.core.GridConstraints.FILL_NONE,
-            com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED,
-            com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0,
-            false));
+        startPanel.add(passwordLabel,
+            new GridConstraints(3, 1, 1, 1, GridConstraints.ANCHOR_SOUTH, GridConstraints.FILL_NONE,
+                GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null,
+                null, 0, false));
         usernameField = new JTextField();
-        startPanel.add(usernameField, new com.intellij.uiDesigner.core.GridConstraints(4, 0, 1, 1,
-            com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST,
-            com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL,
-            com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW,
-            com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null,
-            new Dimension(150, -1), null, 0, false));
+        startPanel.add(usernameField, new GridConstraints(4, 0, 1, 1, GridConstraints.ANCHOR_WEST,
+            GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW,
+            GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
         passwordField = new JTextField();
-        startPanel.add(passwordField, new com.intellij.uiDesigner.core.GridConstraints(4, 1, 1, 1,
-            com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST,
-            com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL,
-            com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW,
-            com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null,
-            new Dimension(150, -1), null, 0, false));
+        startPanel.add(passwordField, new GridConstraints(4, 1, 1, 1, GridConstraints.ANCHOR_WEST,
+            GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW,
+            GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
         driverLabel = new JLabel();
         driverLabel.setText("SQL Driver");
-        startPanel.add(driverLabel, new com.intellij.uiDesigner.core.GridConstraints(5, 0, 1, 2,
-            com.intellij.uiDesigner.core.GridConstraints.ANCHOR_SOUTH,
-            com.intellij.uiDesigner.core.GridConstraints.FILL_NONE,
-            com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED,
-            com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0,
-            false));
+        startPanel.add(driverLabel,
+            new GridConstraints(5, 0, 1, 2, GridConstraints.ANCHOR_SOUTH, GridConstraints.FILL_NONE,
+                GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null,
+                null, 0, false));
         driverField = new JTextField();
-        startPanel.add(driverField, new com.intellij.uiDesigner.core.GridConstraints(6, 0, 1, 2,
-            com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST,
-            com.intellij.uiDesigner.core.GridConstraints.FILL_HORIZONTAL,
-            com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_WANT_GROW,
-            com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null,
-            new Dimension(150, -1), null, 0, false));
+        startPanel.add(driverField, new GridConstraints(6, 0, 1, 2, GridConstraints.ANCHOR_WEST,
+            GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW,
+            GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
     }
 
     /**
@@ -274,4 +235,5 @@ public class startScreen extends JFrame {
     public JComponent $$$getRootComponent$$$() {
         return startPanel;
     }
+
 }
