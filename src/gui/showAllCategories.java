@@ -1,16 +1,12 @@
 package gui;
 
-import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import helper.queryDB;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class showAllCategories extends JFrame {
-    private JButton backButton;
     private JPanel panel1;
 
     {
@@ -23,17 +19,8 @@ public class showAllCategories extends JFrame {
     public showAllCategories() {
         add(panel1);
         setTitle("Show All Categories");
-        setSize(800, 600);
+        setSize(200, 600);
         setLocationRelativeTo(null);
-        //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        backButton.addActionListener(new ActionListener() {
-            @Override public void actionPerformed(ActionEvent e) {
-                dispose();
-                startScreen startScreen = new startScreen();
-                startScreen.setVisible(true);
-            }
-        });
 
         String query = "SELECT Category FROM itemcategory GROUP BY Category";
         queryDB queryDB = new queryDB();
@@ -50,12 +37,6 @@ public class showAllCategories extends JFrame {
     private void $$$setupUI$$$() {
         panel1 = new JPanel();
         panel1.setLayout(new GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
-        backButton = new JButton();
-        backButton.setText("back");
-        panel1.add(backButton, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_NORTHWEST,
-            GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
     }
 
     /**
@@ -64,5 +45,4 @@ public class showAllCategories extends JFrame {
     public JComponent $$$getRootComponent$$$() {
         return panel1;
     }
-
 }

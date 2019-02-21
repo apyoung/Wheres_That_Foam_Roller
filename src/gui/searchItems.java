@@ -29,8 +29,8 @@ public class searchItems extends JFrame {
         backButton.addActionListener(new ActionListener() {
             @Override public void actionPerformed(ActionEvent e) {
                 dispose();
-                startScreen startScreen = new startScreen();
-                startScreen.setVisible(true);
+                //startScreen startScreen = new startScreen();
+                //startScreen.setVisible(true);
             }
         });
     }

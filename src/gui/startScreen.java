@@ -157,10 +157,10 @@ public class startScreen extends JFrame {
                 GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
                 GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(125, 50), null, 0, false));
         startPanelLabel = new JLabel();
-        Font startPanelLabelFont =
-            this.$$$getFont$$$(null, Font.BOLD, 12, startPanelLabel.getFont());
-        if (startPanelLabelFont != null)
-            startPanelLabel.setFont(startPanelLabelFont);
+        //Font startPanelLabelFont =
+            //this.$$$getFont$$$(null, Font.BOLD, 12, startPanelLabel.getFont());
+        //if (startPanelLabelFont != null)
+            //startPanelLabel.setFont(startPanelLabelFont);
         startPanelLabel.setText("Choose Search Method:");
         startPanel.add(startPanelLabel,
             new GridConstraints(0, 0, 1, 2, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE,
@@ -207,10 +207,10 @@ public class startScreen extends JFrame {
             GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW,
             GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
     }
-
-    /**
+/*
+    *//**
      * @noinspection ALL
-     */
+     *//*
     private Font $$$getFont$$$(String fontName, int style, int size, Font currentFont) {
         if (currentFont == null)
             return null;
@@ -227,7 +227,7 @@ public class startScreen extends JFrame {
         }
         return new Font(resultName, style >= 0 ? style : currentFont.getStyle(),
             size >= 0 ? size : currentFont.getSize());
-    }
+    }*/
 
     /**
      * @noinspection ALL

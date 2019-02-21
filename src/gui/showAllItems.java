@@ -10,7 +10,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class showAllItems extends JFrame {
-    private JButton backButton;
     private JPanel panel1;
 
     {
@@ -25,15 +24,6 @@ public class showAllItems extends JFrame {
         setTitle("Show All Items");
         setSize(800, 600);
         setLocationRelativeTo(null);
-        //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        backButton.addActionListener(new ActionListener() {
-            @Override public void actionPerformed(ActionEvent e) {
-                dispose();
-                startScreen startScreen = new startScreen();
-                startScreen.setVisible(true);
-            }
-        });
 
         String query =
             "SELECT DISTINCT item.`Name`, item.`Condition`, item.MadeIn, item.UPC FROM item,itemcategory WHERE item.UPC = itemcategory.UPC AND item.`Condition` = itemcategory.`Condition`";
@@ -51,13 +41,7 @@ public class showAllItems extends JFrame {
     private void $$$setupUI$$$() {
         panel1 = new JPanel();
         panel1.setLayout(new GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
-        backButton = new JButton();
-        backButton.setText("back");
-        panel1.add(backButton, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_NORTHWEST,
-            GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-    }
+        }
 
     /**
      * @noinspection ALL
@@ -65,5 +49,4 @@ public class showAllItems extends JFrame {
     public JComponent $$$getRootComponent$$$() {
         return panel1;
     }
-
 }
