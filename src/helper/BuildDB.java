@@ -8,20 +8,20 @@ import java.sql.SQLException;
 public class BuildDB {
 	public BuildDB() {
 		Connection con = null;
+		PreparedStatement stmt = null;
 		try {
 			System.out.println("Checking for DB");
 			Class.forName("com.mysql.jdbc.Driver");
 			con = DriverManager.getConnection
 					("jdbc:mysql://localhost/?useSSL=false","root",
-							"test");
-			PreparedStatement s = con.prepareStatement("CREATE DATABASE " +
+							"root");
+			stmt = con.prepareStatement("CREATE DATABASE " +
 					"WTFoamroller");
 			System.out.println("Sending statement");
-			s.executeUpdate();
+			stmt.executeUpdate();
 			System.out.println("Building sample Database");
 			InsertData insertData = new InsertData();
 			insertData.build();
-			s.close();
 		} catch (SQLException ex) {
 			if(ex.getErrorCode() == 1007){
 				InsertData insertData = new InsertData();
@@ -30,6 +30,15 @@ public class BuildDB {
 			System.out.println("Oops\n" + ex.getErrorCode() + ex );
 		} catch (ClassNotFoundException ce){
 
+		} finally {
+	    try {
+	      if (con != null)
+	        con.close();
+	      if (stmt != null)
+	        stmt.close();
+      } catch (SQLException e) {
+        e.printStackTrace();
+      }
 		}
 	}
 }
