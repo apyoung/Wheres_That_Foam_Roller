@@ -1,5 +1,6 @@
 import gui.splashScreen;
 import gui.startScreen;
+import helper.BuildDB;
 
 import javax.swing.*;
 
@@ -26,6 +27,7 @@ public class WTF {
 
         SwingUtilities.invokeLater(new Runnable() {
             @Override public void run() {
+                BuildDB db = new BuildDB();
                 startScreen startScreen = new startScreen();
                 startScreen.setVisible(true);
             }
