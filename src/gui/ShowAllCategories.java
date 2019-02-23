@@ -1,22 +1,22 @@
 package gui;
 
 import com.intellij.uiDesigner.core.GridLayoutManager;
-import helper.queryDB;
+import helper.QueryDB;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class showAllCategories extends JFrame {
+public class ShowAllCategories extends JFrame {
     private JPanel panel1;
 
-    public showAllCategories() {
+    public ShowAllCategories() {
         add(panel1);
         setTitle("Show All Categories");
         setSize(200, 600);
         setLocationRelativeTo(null);
 
         String query = "SELECT Category FROM itemcategory GROUP BY Category";
-        queryDB queryDB = new queryDB();
+        QueryDB queryDB = new QueryDB();
         add(queryDB.getScrollPane(query));
     }
 

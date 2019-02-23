@@ -35,14 +35,17 @@ public class DatabaseConnection extends JFrame {
         connectButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String url = urlField.getText().trim();
-                String user = usernameField.getText().trim();
-                String password = passwordField.getText().trim();
-                String driver = driverField.getText().trim();
+                StartScreen.url = urlField.getText().trim();
+                StartScreen.user = usernameField.getText().trim();
+                StartScreen.password = passwordField.getText().trim();
+                StartScreen.driver = driverField.getText().trim();
                 if (newDBCheckBox.isSelected() == true) {
-                    BuildDB.buildDB(driver, url, user, password);
+                    BuildDB.buildDB(StartScreen.driver,
+                            StartScreen.url,
+                            StartScreen.user,
+                            StartScreen.password);
                 }
-                startScreen startScreen = new startScreen();
+                StartScreen startScreen = new StartScreen();
                 startScreen.setVisible(true);
                 setVisible(false);
             }

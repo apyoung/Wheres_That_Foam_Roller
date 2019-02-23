@@ -2,26 +2,31 @@ package gui;
 
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
-import helper.queryDB;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class showAllStores extends JFrame {
+public class SearchItems extends JFrame {
+    private JButton backButton;
     private JPanel panel1;
 
-    public showAllStores() {
+    public SearchItems() {
         add(panel1);
-        setTitle("Show All Stores");
-        setSize(1200, 600);
+        setTitle("Search Items");
+        setSize(800, 600);
         setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        String query =
-                "SELECT store.*,company.name AS 'Parent Company' FROM store,company,owns WHERE store.storeid = owns.storeid AND owns.companyname = company.name";
-        queryDB queryDB = new queryDB();
-        add(queryDB.getScrollPane(query));
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                //StartScreen StartScreen = new StartScreen();
+                //StartScreen.setVisible(true);
+            }
+        });
     }
 
     {
@@ -41,6 +46,9 @@ public class showAllStores extends JFrame {
     private void $$$setupUI$$$() {
         panel1 = new JPanel();
         panel1.setLayout(new GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
+        backButton = new JButton();
+        backButton.setText("back");
+        panel1.add(backButton, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
     }
 
     /**

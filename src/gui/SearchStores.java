@@ -8,13 +8,13 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class searchItems extends JFrame {
+public class SearchStores extends JFrame {
     private JButton backButton;
     private JPanel panel1;
 
-    public searchItems() {
+    public SearchStores() {
         add(panel1);
-        setTitle("Search Items");
+        setTitle("Search Stores");
         setSize(800, 600);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -23,8 +23,8 @@ public class searchItems extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                //startScreen startScreen = new startScreen();
-                //startScreen.setVisible(true);
+                //StartScreen StartScreen = new StartScreen();
+                //StartScreen.setVisible(true);
             }
         });
     }

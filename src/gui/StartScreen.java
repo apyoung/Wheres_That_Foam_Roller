@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class startScreen extends JFrame {
+public class StartScreen extends JFrame {
     public static String url;
     public static String user;
     public static String password;
@@ -30,7 +30,7 @@ public class startScreen extends JFrame {
     private JLabel driverLabel;
     private JTextField driverField;
 
-    public startScreen() {
+    public StartScreen() {
         add(startPanel);
 
         setTitle("Where's That Foam Roller?");
@@ -43,7 +43,7 @@ public class startScreen extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setConnectionParameters();
-                searchStores searchStores = new searchStores();
+                SearchStores searchStores = new SearchStores();
                 //dispose();
                 searchStores.setVisible(true);
             }
@@ -52,7 +52,7 @@ public class startScreen extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setConnectionParameters();
-                showAllStores showAllStores = new showAllStores();
+                ShowAllStores showAllStores = new ShowAllStores();
                 //dispose();
                 showAllStores.setVisible(true);
             }
@@ -61,7 +61,7 @@ public class startScreen extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setConnectionParameters();
-                searchItems searchItems = new searchItems();
+                SearchItems searchItems = new SearchItems();
                 //dispose();
                 searchItems.setVisible(true);
             }
@@ -70,7 +70,7 @@ public class startScreen extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setConnectionParameters();
-                showAllItems showAllItems = new showAllItems();
+                ShowAllItems showAllItems = new ShowAllItems();
                 //dispose();
                 showAllItems.setVisible(true);
             }
@@ -79,7 +79,7 @@ public class startScreen extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setConnectionParameters();
-                searchCategories searchCategories = new searchCategories();
+                SearchCategories searchCategories = new SearchCategories();
                 //dispose();
                 searchCategories.setVisible(true);
             }
@@ -88,7 +88,7 @@ public class startScreen extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setConnectionParameters();
-                showAllCategories showAllCategories = new showAllCategories();
+                ShowAllCategories showAllCategories = new ShowAllCategories();
                 //dispose();
                 showAllCategories.setVisible(true);
             }

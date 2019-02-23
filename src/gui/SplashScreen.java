@@ -6,13 +6,13 @@ import com.intellij.uiDesigner.core.GridLayoutManager;
 import javax.swing.*;
 import java.awt.*;
 
-public class splashScreen extends JFrame {
+public class SplashScreen extends JFrame {
     public JProgressBar progressBar;
     public JLabel LoadingProgressLabel;
     private JLabel splashImage;
     private JPanel splashPanel;
 
-    public splashScreen() {
+    public SplashScreen() {
         add(splashPanel);
         setSize(490, 350);
         setLocationRelativeTo(null);

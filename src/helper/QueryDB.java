@@ -1,12 +1,12 @@
 package helper;
 
-import gui.startScreen;
+import gui.StartScreen;
 
 import javax.swing.*;
 import java.sql.*;
 import java.util.Vector;
 
-public class queryDB {
+public class QueryDB {
 
     public static JScrollPane getScrollPane(String query) {
 
@@ -14,10 +14,10 @@ public class queryDB {
         Statement statement = null;
         Connection connection = null;
 
-        String url = startScreen.url;
-        String user = startScreen.user;
-        String password = startScreen.password;
-        String driver = startScreen.driver;
+        String url = StartScreen.url;
+        String user = StartScreen.user;
+        String password = StartScreen.password;
+        String driver = StartScreen.driver;
 
         try {
             Class.forName(driver);
