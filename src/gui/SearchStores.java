@@ -45,10 +45,24 @@ public class SearchStores extends JFrame {
                                 "WHERE store.storeid = owns.storeid " +
                                 "AND owns.companyname = company.name";
                 queryResultPanel.removeAll();
-                queryResultPanel.add(QueryDB.getScrollPane(query), 0, 0);
+                queryResultPanel.add(QueryDB.getScrollPane(query),
+                        new GridConstraints(0,
+                                0,
+                                1,
+                                1,
+                                GridConstraints.ANCHOR_CENTER,
+                                GridConstraints.FILL_BOTH,
+                                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+                                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+                                null, null, null, 0, false));
                 System.out.println(queryResultPanel.getComponent(0));
                 queryResultPanel.revalidate();
+                // Don't have to repaint it sounds like
                 queryResultPanel.repaint();
+
+                // List selection listener
+
+                // Try same size horizontally and same size vertically
             }
         });
     }
