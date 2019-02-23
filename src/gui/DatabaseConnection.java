@@ -29,12 +29,14 @@ public class DatabaseConnection extends JFrame {
         this(true);
     }
 
+    //TODO Make this frame pull information from MainScreen if it is present
+
     public DatabaseConnection(Boolean createMainScreen) {
         add(dbConnectionPanel);
-        setSize(1000, 350);
+        setSize(800, 350);
         setLocationRelativeTo(null);
-        setResizable(false);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(true);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         connectButton.addActionListener(new ActionListener() {
             @Override
