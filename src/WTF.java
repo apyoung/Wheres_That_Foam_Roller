@@ -1,3 +1,4 @@
+import gui.DatabaseConnection;
 import gui.splashScreen;
 import gui.startScreen;
 import helper.BuildDB;
@@ -27,9 +28,8 @@ public class WTF {
 
         SwingUtilities.invokeLater(new Runnable() {
             @Override public void run() {
-                BuildDB db = new BuildDB();
-                startScreen startScreen = new startScreen();
-                startScreen.setVisible(true);
+                DatabaseConnection dbc = new DatabaseConnection();
+                dbc.setVisible(true);
             }
         });
     }
