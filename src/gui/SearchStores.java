@@ -2,6 +2,7 @@ package gui;
 
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
+import helper.QueryDB;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,21 +11,44 @@ import java.awt.event.ActionListener;
 
 public class SearchStores extends JFrame {
     private JButton backButton;
-    private JPanel panel1;
+    private JPanel mainPanel;
+    private JScrollPane queryResultScrollPane;
+    private JButton searchButton;
+    private JTextField storeIDField;
+    private JLabel storeIDLabel;
+    private JPanel queryResultPanel;
 
     public SearchStores() {
-        add(panel1);
+        add(mainPanel);
         setTitle("Search Stores");
         setSize(800, 600);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        /**
+         * Closes the SearchStores window when the back button is clicked.
+         */
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
                 //MainScreen MainScreen = new MainScreen();
                 //MainScreen.setVisible(true);
+            }
+        });
+        searchButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String query =
+                        "SELECT store.*,company.name AS 'Parent Company' " +
+                                "FROM store,company,owns " +
+                                "WHERE store.storeid = owns.storeid " +
+                                "AND owns.companyname = company.name";
+                queryResultPanel.removeAll();
+                queryResultPanel.add(QueryDB.getScrollPane(query), 0, 0);
+                System.out.println(queryResultPanel.getComponent(0));
+                queryResultPanel.revalidate();
+                queryResultPanel.repaint();
             }
         });
     }
@@ -44,18 +68,29 @@ public class SearchStores extends JFrame {
      * @noinspection ALL
      */
     private void $$$setupUI$$$() {
-        panel1 = new JPanel();
-        panel1.setLayout(new GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
+        mainPanel = new JPanel();
+        mainPanel.setLayout(new GridLayoutManager(4, 2, new Insets(0, 0, 0, 0), -1, -1));
+        searchButton = new JButton();
+        searchButton.setText("Search");
+        mainPanel.add(searchButton, new GridConstraints(2, 0, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        storeIDField = new JTextField();
+        mainPanel.add(storeIDField, new GridConstraints(1, 1, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
+        storeIDLabel = new JLabel();
+        storeIDLabel.setText("Store ID");
+        mainPanel.add(storeIDLabel, new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_EAST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         backButton = new JButton();
         backButton.setText("back");
-        panel1.add(backButton, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        mainPanel.add(backButton, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        queryResultPanel = new JPanel();
+        queryResultPanel.setLayout(new GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
+        mainPanel.add(queryResultPanel, new GridConstraints(3, 0, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
     }
 
     /**
      * @noinspection ALL
      */
     public JComponent $$$getRootComponent$$$() {
-        return panel1;
+        return mainPanel;
     }
 
 }

@@ -15,7 +15,7 @@
           </grid>
         </constraints>
         <properties>
-          <text value="jdbc:mysql://localhost/?useSSL=false"/>
+          <text value="jdbc:mysql://localhost/WTFoamroller?autoReconnect=true&amp;useSSL=false"/>
           <toolTipText value=""/>
         </properties>
       </component>
