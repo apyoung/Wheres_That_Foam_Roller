@@ -65,7 +65,7 @@ public class SearchStores extends JFrame {
 
     private String getQueryString() {
         String result =
-                "SELECT store.*, store.city, company.name AS 'Parent Company' " +
+                "SELECT store.*, company.name AS 'Parent Company' " +
                 "FROM store, company, owns " +
                 "WHERE store.storeid = owns.storeid " +
                 "AND owns.companyname = company.name ";
