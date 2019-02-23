@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="gui.DatabaseConnection">
+  <grid id="27dc6" binding="dbConnectionPanel" layout-manager="GridLayoutManager" row-count="8" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="10" left="10" bottom="10" right="10"/>
+    <constraints>
+      <xy x="20" y="20" width="613" height="273"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="f4d26" class="javax.swing.JTextField" binding="urlField">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="jdbc:mysql://localhost/?useSSL=false"/>
+          <toolTipText value=""/>
+        </properties>
+      </component>
+      <component id="e89a3" class="javax.swing.JLabel" binding="urlLabel">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="129" height="16"/>
+          </grid>
+        </constraints>
+        <properties>
+          <labelFor value="f4d26"/>
+          <text value="SQL Server URL"/>
+        </properties>
+      </component>
+      <component id="93f24" class="javax.swing.JTextField" binding="usernameField">
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="root"/>
+        </properties>
+      </component>
+      <component id="2f4be" class="javax.swing.JLabel" binding="usernameLabel">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="129" height="16"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="SQL Server Username"/>
+        </properties>
+      </component>
+      <component id="689bc" class="javax.swing.JLabel" binding="panelLabel">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <enabled value="true"/>
+          <text value="Database Connection Information"/>
+        </properties>
+      </component>
+      <component id="a79c7" class="javax.swing.JLabel" binding="passwordLabel">
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="129" height="16"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="SQL Server Password"/>
+        </properties>
+      </component>
+      <component id="8140e" class="javax.swing.JTextField" binding="passwordField">
+        <constraints>
+          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="root"/>
+        </properties>
+      </component>
+      <component id="59784" class="javax.swing.JLabel" binding="newDBCheckBoxLabel1">
+        <constraints>
+          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="120" height="16"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="Create a new database on the server?" noi18n="true"/>
+        </properties>
+      </component>
+      <component id="a83e5" class="javax.swing.JCheckBox" binding="newDBCheckBox">
+        <constraints>
+          <grid row="5" column="1" row-span="2" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <selected value="true"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="bf62d" class="javax.swing.JLabel" binding="newDBCheckBoxLabel2">
+        <constraints>
+          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="This will be a database called &quot;WTFoamroller&quot;"/>
+        </properties>
+      </component>
+      <component id="56e88" class="javax.swing.JButton" binding="connectButton" default-binding="true">
+        <constraints>
+          <grid row="7" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Connect"/>
+        </properties>
+      </component>
+      <component id="8ab9d" class="javax.swing.JLabel" binding="driverLabel">
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="129" height="16"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="Driver Name"/>
+        </properties>
+      </component>
+      <component id="cf81b" class="javax.swing.JTextField" binding="driverField">
+        <constraints>
+          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="com.mysql.jdbc.Driver"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>

@@ -1,6 +1,5 @@
-import gui.splashScreen;
-import gui.startScreen;
-import helper.BuildDB;
+import gui.DatabaseConnection;
+import gui.SplashScreen;
 
 import javax.swing.*;
 
@@ -12,7 +11,7 @@ public class WTF {
             e.printStackTrace();
         }
 
-        splashScreen splashScreen = new splashScreen();
+        SplashScreen splashScreen = new SplashScreen();
         splashScreen.setVisible(true);
         try {
             for (int i = 0; i <= 100; i++) {
@@ -27,9 +26,8 @@ public class WTF {
 
         SwingUtilities.invokeLater(new Runnable() {
             @Override public void run() {
-                BuildDB db = new BuildDB();
-                startScreen startScreen = new startScreen();
-                startScreen.setVisible(true);
+                DatabaseConnection dbc = new DatabaseConnection();
+                dbc.setVisible(true);
             }
         });
     }
