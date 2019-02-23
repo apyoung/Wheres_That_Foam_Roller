@@ -23,8 +23,8 @@ public class SearchStores extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                //StartScreen StartScreen = new StartScreen();
-                //StartScreen.setVisible(true);
+                //MainScreen MainScreen = new MainScreen();
+                //MainScreen.setVisible(true);
             }
         });
     }

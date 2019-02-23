@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class StartScreen extends JFrame {
+public class MainScreen extends JFrame {
     public static String url;
     public static String user;
     public static String password;
@@ -21,16 +21,13 @@ public class StartScreen extends JFrame {
     private JButton searchCategoriesButton;
     private JButton showAllCategoriesButton;
     private JLabel startPanelLabel;
+    private JButton editConnectionInfoButton;
     private JTextField urlField;
     private JTextField usernameField;
     private JTextField passwordField;
-    private JLabel urlLabel;
-    private JLabel usernameLabel;
-    private JLabel passwordLabel;
-    private JLabel driverLabel;
     private JTextField driverField;
 
-    public StartScreen() {
+    public MainScreen() {
         add(startPanel);
 
         setTitle("Where's That Foam Roller?");
@@ -42,7 +39,6 @@ public class StartScreen extends JFrame {
         searchStoresButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                setConnectionParameters();
                 SearchStores searchStores = new SearchStores();
                 //dispose();
                 searchStores.setVisible(true);
@@ -51,7 +47,6 @@ public class StartScreen extends JFrame {
         showAllStoresButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                setConnectionParameters();
                 ShowAllStores showAllStores = new ShowAllStores();
                 //dispose();
                 showAllStores.setVisible(true);
@@ -60,7 +55,6 @@ public class StartScreen extends JFrame {
         searchItemsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                setConnectionParameters();
                 SearchItems searchItems = new SearchItems();
                 //dispose();
                 searchItems.setVisible(true);
@@ -69,7 +63,6 @@ public class StartScreen extends JFrame {
         showAllItemsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                setConnectionParameters();
                 ShowAllItems showAllItems = new ShowAllItems();
                 //dispose();
                 showAllItems.setVisible(true);
@@ -78,7 +71,6 @@ public class StartScreen extends JFrame {
         searchCategoriesButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                setConnectionParameters();
                 SearchCategories searchCategories = new SearchCategories();
                 //dispose();
                 searchCategories.setVisible(true);
@@ -87,19 +79,18 @@ public class StartScreen extends JFrame {
         showAllCategoriesButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                setConnectionParameters();
                 ShowAllCategories showAllCategories = new ShowAllCategories();
                 //dispose();
                 showAllCategories.setVisible(true);
             }
         });
-    }
-
-    public void setConnectionParameters() {
-        url = urlField.getText().trim();
-        user = usernameField.getText().trim();
-        password = passwordField.getText().trim();
-        driver = driverField.getText().trim();
+        editConnectionInfoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DatabaseConnection dbc = new DatabaseConnection(false);
+                dbc.setVisible(true);
+            }
+        });
     }
 
     {
@@ -118,52 +109,35 @@ public class StartScreen extends JFrame {
      */
     private void $$$setupUI$$$() {
         startPanel = new JPanel();
-        startPanel.setLayout(new GridLayoutManager(10, 2, new Insets(0, 0, 0, 0), -1, -1));
+        startPanel.setLayout(new GridLayoutManager(5, 2, new Insets(0, 0, 0, 0), -1, -1));
         showAllItemsButton = new JButton();
         showAllItemsButton.setText("Show All Items");
-        startPanel.add(showAllItemsButton, new GridConstraints(8, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(125, 50), null, 0, false));
+        startPanel.add(showAllItemsButton, new GridConstraints(3, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(125, 50), null, 0, false));
         searchItemsButton = new JButton();
         searchItemsButton.setHorizontalTextPosition(0);
         searchItemsButton.setText("Search Items");
-        startPanel.add(searchItemsButton, new GridConstraints(8, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(125, 50), null, 0, false));
+        startPanel.add(searchItemsButton, new GridConstraints(3, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(125, 50), null, 0, false));
         searchStoresButton = new JButton();
         searchStoresButton.setText("Search Stores");
-        startPanel.add(searchStoresButton, new GridConstraints(7, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(125, 50), null, 0, false));
+        startPanel.add(searchStoresButton, new GridConstraints(2, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(125, 50), null, 0, false));
         showAllStoresButton = new JButton();
         showAllStoresButton.setText("Show All Stores");
-        startPanel.add(showAllStoresButton, new GridConstraints(7, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(125, 50), null, 0, false));
+        startPanel.add(showAllStoresButton, new GridConstraints(2, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(125, 50), null, 0, false));
         showAllCategoriesButton = new JButton();
         showAllCategoriesButton.setText("Show All Categories");
-        startPanel.add(showAllCategoriesButton, new GridConstraints(9, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(125, 50), null, 0, false));
+        startPanel.add(showAllCategoriesButton, new GridConstraints(4, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(125, 50), null, 0, false));
         searchCategoriesButton = new JButton();
         searchCategoriesButton.setText("Search Categories");
-        startPanel.add(searchCategoriesButton, new GridConstraints(9, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(125, 50), null, 0, false));
+        startPanel.add(searchCategoriesButton, new GridConstraints(4, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(125, 50), null, 0, false));
         startPanelLabel = new JLabel();
         Font startPanelLabelFont = this.$$$getFont$$$(null, Font.BOLD, 12, startPanelLabel.getFont());
         if (startPanelLabelFont != null)
             startPanelLabel.setFont(startPanelLabelFont);
         startPanelLabel.setText("Choose Search Method:");
-        startPanel.add(startPanelLabel, new GridConstraints(0, 0, 1, 2, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 2, false));
-        urlLabel = new JLabel();
-        urlLabel.setText("SQL URL");
-        startPanel.add(urlLabel, new GridConstraints(1, 0, 1, 2, GridConstraints.ANCHOR_SOUTH, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-        urlField = new JTextField();
-        startPanel.add(urlField, new GridConstraints(2, 0, 1, 2, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
-        usernameLabel = new JLabel();
-        usernameLabel.setText("SQL Username");
-        startPanel.add(usernameLabel, new GridConstraints(3, 0, 1, 1, GridConstraints.ANCHOR_SOUTH, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-        passwordLabel = new JLabel();
-        passwordLabel.setText("SQL Password");
-        startPanel.add(passwordLabel, new GridConstraints(3, 1, 1, 1, GridConstraints.ANCHOR_SOUTH, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-        usernameField = new JTextField();
-        startPanel.add(usernameField, new GridConstraints(4, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
-        passwordField = new JTextField();
-        startPanel.add(passwordField, new GridConstraints(4, 1, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
-        driverLabel = new JLabel();
-        driverLabel.setText("SQL Driver");
-        startPanel.add(driverLabel, new GridConstraints(5, 0, 1, 2, GridConstraints.ANCHOR_SOUTH, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-        driverField = new JTextField();
-        startPanel.add(driverField, new GridConstraints(6, 0, 1, 2, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
+        startPanel.add(startPanelLabel, new GridConstraints(1, 0, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 2, false));
+        editConnectionInfoButton = new JButton();
+        editConnectionInfoButton.setText("Edit Connection Info");
+        startPanel.add(editConnectionInfoButton, new GridConstraints(0, 1, 1, 1, GridConstraints.ANCHOR_NORTHEAST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
     }
 
     /**
@@ -191,6 +165,7 @@ public class StartScreen extends JFrame {
     public JComponent $$$getRootComponent$$$() {
         return startPanel;
     }
+
     /*
      *//**
      * @noinspection ALL

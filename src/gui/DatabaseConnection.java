@@ -26,6 +26,10 @@ public class DatabaseConnection extends JFrame {
     private JButton connectButton;
 
     public DatabaseConnection() {
+        this(true);
+    }
+
+    public DatabaseConnection(Boolean createMainScreen) {
         add(dbConnectionPanel);
         setSize(1000, 350);
         setLocationRelativeTo(null);
@@ -35,19 +39,21 @@ public class DatabaseConnection extends JFrame {
         connectButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                StartScreen.url = urlField.getText().trim();
-                StartScreen.user = usernameField.getText().trim();
-                StartScreen.password = passwordField.getText().trim();
-                StartScreen.driver = driverField.getText().trim();
+                MainScreen.url = urlField.getText().trim();
+                MainScreen.user = usernameField.getText().trim();
+                MainScreen.password = passwordField.getText().trim();
+                MainScreen.driver = driverField.getText().trim();
                 if (newDBCheckBox.isSelected() == true) {
-                    BuildDB.buildDB(StartScreen.driver,
-                            StartScreen.url,
-                            StartScreen.user,
-                            StartScreen.password);
+                    BuildDB.buildDB(MainScreen.driver,
+                            MainScreen.url,
+                            MainScreen.user,
+                            MainScreen.password);
                 }
-                StartScreen startScreen = new StartScreen();
-                startScreen.setVisible(true);
-                setVisible(false);
+                if (createMainScreen == true) {
+                    MainScreen mainScreen = new MainScreen();
+                    mainScreen.setVisible(true);
+                }
+                dispose();
             }
         });
     }

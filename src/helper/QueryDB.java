@@ -1,6 +1,6 @@
 package helper;
 
-import gui.StartScreen;
+import gui.MainScreen;
 
 import javax.swing.*;
 import java.sql.*;
@@ -14,10 +14,10 @@ public class QueryDB {
         Statement statement = null;
         Connection connection = null;
 
-        String url = StartScreen.url;
-        String user = StartScreen.user;
-        String password = StartScreen.password;
-        String driver = StartScreen.driver;
+        String url = MainScreen.url;
+        String user = MainScreen.user;
+        String password = MainScreen.password;
+        String driver = MainScreen.driver;
 
         try {
             Class.forName(driver);
