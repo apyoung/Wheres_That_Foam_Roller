@@ -11,13 +11,17 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
 
-public class AdminView extends JFrame {
+class AdminView extends JFrame {
 	JPanel adminPanel;
 	JButton editStore;
 	JButton removeItemReview;
 	JButton addItem;
 	JLabel editS;
 
+	/**
+	 * Frame creation for the AdminView, uses buttons to execute
+	 * example queries
+	 */
 	public AdminView(){
 		adminPanel = new JPanel();
 		adminPanel.setLayout(new GridLayoutManager (4, 1, new Insets(0, 0, 0,
@@ -31,10 +35,11 @@ public class AdminView extends JFrame {
 		editStore = new JButton();
 		removeItemReview = new JButton();
 		addItem = new JButton();
-
+		//set button text
 		editStore.setText("Edit a Store");
 		removeItemReview.setText("Remove an Item Review");
 		addItem.setText("Add an Item");
+		//button action listeners
 		editStore.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -80,6 +85,9 @@ public class AdminView extends JFrame {
 		adminPanel.setVisible(true);
 	}
 	//Example queries
+	/**
+	 * Example query for UPDATE in MySQL database
+	 */
 	private void editStoreQuery() {
 		Connection conn = null;
 		Statement stmt = null;
@@ -98,6 +106,9 @@ public class AdminView extends JFrame {
 		}
 	}
 
+	/**
+	 * Example query for DELETE from MySQL database
+	 */
 	private void removeItemReviewQuery() {
 		Connection conn = null;
 		Statement stmt = null;
@@ -120,6 +131,9 @@ public class AdminView extends JFrame {
 		}
 	}
 
+	/**
+	 * Example query for INSERT into MySQL database
+	 */
 	private void addItemQuery() {
 		Connection conn = null;
 		Statement stmt = null;
@@ -129,10 +143,14 @@ public class AdminView extends JFrame {
 			conn = DriverManager.getConnection(MainScreen.url, MainScreen.user,
 					MainScreen.password);
 			stmt = conn.createStatement();
-			String q = "INSERT into item VALUES (99067192, 'new', 42, " +
+			String q1 = "INSERT into item VALUES (99067192, 'new', 42, " +
 					"'France', 'Pancakes');";
-			System.out.println("Running query: " + q);
-			stmt.executeUpdate(q);
+			System.out.println("Running query: " + q1);
+			stmt.executeUpdate(q1);
+			String q2 = "INSERT into itemcategory VALUES (99067192, 'new', " +
+					"'Home & Garden');";
+			System.out.println("Running query: " + q2);
+			stmt.executeUpdate(q2);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}

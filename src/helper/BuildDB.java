@@ -24,6 +24,14 @@ public class BuildDB {
                 "root");
     }
 
+    /**
+     * Constructor for the BuildDB class, creates the MySQL database with the
+     * passed parameters
+     * @param driverName name of the driver for SQL
+     * @param url Url for the database
+     * @param username login username
+     * @param password login password for username
+     */
     public static void buildDB(String driverName, String url, String username,
                                String password) {
         Connection conn = null;
@@ -38,6 +46,7 @@ public class BuildDB {
             stmt.executeUpdate();
             stmt.close();
             conn.close();
+            //rebuild the url string for the database that was just made
             String[] splitUrl = url.split("/");
             String newUrl = splitUrl[0]+ "//" + splitUrl[2] + "/wtfoamroller" +
                     splitUrl[3];

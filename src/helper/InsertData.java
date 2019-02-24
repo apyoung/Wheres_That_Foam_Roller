@@ -6,12 +6,21 @@ import java.io.FileReader;
 import java.sql.*;
 
 public class InsertData {
-
+    /**
+     * Callable method for InserData to build tables and populate with data
+     * @param conn Connection used from calling application
+     */
     void build(Connection conn) {
         populate("src/sql/Create Tables.sql", conn);
         populate("src/sql/Insert Data.sql", conn);
     }
 
+    /**
+     * populate method does the actual population of the tables/data to the
+     * tables
+     * @param fileName the .sql file containing queries to be run
+     * @param con Connection from calling application
+     */
     private void populate(String fileName, Connection con) {
         try {
             String s;
