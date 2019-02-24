@@ -11,8 +11,8 @@ public class InsertData {
      * @param conn Connection used from calling application
      */
     void build(Connection conn) {
-        populate("src/sql/Create Tables.sql", conn);
-        populate("src/sql/Insert Data.sql", conn);
+        populate("sql/Create Tables.sql", conn);
+        populate("sql/Insert Data.sql", conn);
     }
 
     /**
