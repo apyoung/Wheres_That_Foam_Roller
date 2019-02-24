@@ -40,7 +40,7 @@ public class BuildDB {
             conn.close();
             String[] splitUrl = url.split("/");
             String newUrl = splitUrl[0]+ "//" + splitUrl[2] + "/wtfoamroller" +
-            splitUrl[3];
+                    splitUrl[3];
             MainScreen.url = newUrl;
             conn = DriverManager.getConnection(newUrl, username, password);
             System.out.println("Building sample Database");
