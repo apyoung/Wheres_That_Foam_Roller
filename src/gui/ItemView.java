@@ -4,12 +4,12 @@ import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import helper.QueryDB;
 
-import javax.management.Query;
 import javax.swing.*;
 import javax.swing.table.TableCellRenderer;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.*;
-import java.util.ArrayList;
 
 public class ItemView extends JFrame {
     private JPanel mainPanel;
@@ -25,13 +25,15 @@ public class ItemView extends JFrame {
     private JLabel reviewsLabel;
     private JPanel reviewsPanel;
     private JList categoryList;
-    private JPanel categoriesPanel;
+    private JLabel storesLabel1;
+    private JPanel storesPanel;
+    private JLabel storesLabel2;
     private String upc;
     private String condition;
 
     public ItemView(String upc, String condition) {
         add(mainPanel);
-        setSize(800, 800);
+        setSize(1000, 1000);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
@@ -97,9 +99,8 @@ public class ItemView extends JFrame {
                 categories[row] = categoryResultSet.getString(1);
             }
             categoryList.setListData(categories);
-
-            // Populate the reviews
             populateReviews();
+            populateStores();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -124,14 +125,16 @@ public class ItemView extends JFrame {
         }
     }
 
-    private void populateCategories() {
-        String categoryQuery = "SELECT itemcategory.Category " +
-                "FROM itemcategory " +
-                "WHERE itemcategory.upc=" + this.upc + " " +
-                "AND itemcategory.condition='" + this.condition + "';";
-        JScrollPane resultScrollPane = QueryDB.getScrollPane(categoryQuery);
-
-        categoriesPanel.add(resultScrollPane,
+    private void populateStores() {
+        String storeQuery =
+                "SELECT store.StoreID, store.Name, Price, InventoryLevel, " +
+                        "InventoryOnOrder, LastStockedDate " +
+                        "FROM carries, store " +
+                        "WHERE carries.upc=" + this.upc + " " +
+                        "AND carries.condition='" + this.condition + "' " +
+                        "AND carries.StoreID=store.StoreID;";
+        JScrollPane resultScrollPane = getStoreScrollPane(storeQuery);
+        storesPanel.add(resultScrollPane,
                 new GridConstraints(0,
                         0,
                         1,
@@ -141,7 +144,24 @@ public class ItemView extends JFrame {
                         GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
                         GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
                         null, null, null, 0, false));
-        categoriesPanel.revalidate();
+        storesPanel.revalidate();
+    }
+
+    private JScrollPane getStoreScrollPane(String query) {
+        JTable queryJTable = QueryDB.getJTable(query);
+        queryJTable.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                JTable target = (JTable) e.getSource();
+                if (target.getSelectedColumn() == 0) {
+                    int row = target.getSelectedRow();
+                    int column = target.getSelectedColumn();
+                    StoreView storeView = new StoreView((int) target.getValueAt(row, column));
+                    storeView.setVisible(true);
+                }
+            }
+        });
+        return new JScrollPane(queryJTable);
     }
 
     private void populateReviews() {
@@ -200,7 +220,7 @@ public class ItemView extends JFrame {
      */
     private void $$$setupUI$$$() {
         mainPanel = new JPanel();
-        mainPanel.setLayout(new GridLayoutManager(7, 2, new Insets(10, 10, 10, 10), -1, -1));
+        mainPanel.setLayout(new GridLayoutManager(10, 2, new Insets(10, 10, 10, 10), -1, -1));
         itemNameLabel = new JLabel();
         itemNameLabel.setText("Item Name");
         mainPanel.add(itemNameLabel, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
@@ -236,6 +256,15 @@ public class ItemView extends JFrame {
         mainPanel.add(reviewsLabel, new GridConstraints(5, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         categoryList = new JList();
         mainPanel.add(categoryList, new GridConstraints(4, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
+        storesPanel = new JPanel();
+        storesPanel.setLayout(new GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
+        mainPanel.add(storesPanel, new GridConstraints(9, 0, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, new Dimension(-1, 100), null, 0, false));
+        storesLabel1 = new JLabel();
+        storesLabel1.setText("Stores that carry this item:");
+        mainPanel.add(storesLabel1, new GridConstraints(7, 0, 1, 2, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        storesLabel2 = new JLabel();
+        storesLabel2.setText("(Click on the \"Store ID\" to view that store's page)");
+        mainPanel.add(storesLabel2, new GridConstraints(8, 0, 1, 2, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
     }
 
     /**

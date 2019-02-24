@@ -8,6 +8,8 @@ import javax.management.Query;
 import javax.swing.*;
 import javax.swing.table.TableCellRenderer;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.*;
 
 public class StoreView extends JFrame {
@@ -30,13 +32,16 @@ public class StoreView extends JFrame {
     private JLabel phoneLabel;
     private JLabel reviewsLabel;
     private JPanel reviewsPanel;
+    private JPanel itemsPanel;
+    private JLabel itemsLabel1;
+    private JLabel itemsLabel2;
     private int storeID;
 
     public StoreView(int storeID) {
         add(mainPanel);
 
         setTitle("Search Stores");
-        setSize(800, 800);
+        setSize(1000, 1000);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
@@ -85,6 +90,7 @@ public class StoreView extends JFrame {
             stateField.setText(state);
             phoneField.setText(phone);
             populateReviews();
+            populateItems();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -99,6 +105,47 @@ public class StoreView extends JFrame {
                 se.printStackTrace();
             }
         }
+    }
+
+    private void populateItems() {
+        String itemQuery =
+                "SELECT item.UPC, item.Condition, item.Name, Price, " +
+                        "InventoryLevel, InventoryOnOrder, LastStockedDate " +
+                        "FROM carries, item " +
+                        "WHERE carries.upc=item.upc " +
+                        "AND carries.condition=item.condition " +
+                        "AND carries.StoreID=" + storeID + ";";
+        JScrollPane resultScrollPane = getItemScrollPane(itemQuery);
+        itemsPanel.add(resultScrollPane,
+                new GridConstraints(0,
+                        0,
+                        1,
+                        1,
+                        GridConstraints.ANCHOR_CENTER,
+                        GridConstraints.FILL_BOTH,
+                        GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+                        GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+                        null, null, null, 0, false));
+        itemsPanel.revalidate();
+    }
+
+    private JScrollPane getItemScrollPane(String query) {
+        JTable queryJTable = QueryDB.getJTable(query);
+        queryJTable.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                JTable target = (JTable) e.getSource();
+                if (target.getSelectedColumn() == 0) {
+                    int row = target.getSelectedRow();
+                    int column = target.getSelectedColumn();
+                    String upc = target.getValueAt(row, column).toString();
+                    String condition = target.getValueAt(row, column + 1).toString();
+                    ItemView itemView = new ItemView(upc, condition);
+                    itemView.setVisible(true);
+                }
+            }
+        });
+        return new JScrollPane(queryJTable);
     }
 
     private void populateReviews() {
@@ -156,7 +203,7 @@ public class StoreView extends JFrame {
      */
     private void $$$setupUI$$$() {
         mainPanel = new JPanel();
-        mainPanel.setLayout(new GridLayoutManager(8, 4, new Insets(10, 10, 10, 10), -1, -1));
+        mainPanel.setLayout(new GridLayoutManager(11, 4, new Insets(10, 10, 10, 10), -1, -1));
         storeNameLabel = new JLabel();
         storeNameLabel.setText("Store Name");
         mainPanel.add(storeNameLabel, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
@@ -211,6 +258,15 @@ public class StoreView extends JFrame {
         reviewsLabel = new JLabel();
         reviewsLabel.setText("Reviews:");
         mainPanel.add(reviewsLabel, new GridConstraints(6, 0, 1, 4, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        itemsPanel = new JPanel();
+        itemsPanel.setLayout(new GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
+        mainPanel.add(itemsPanel, new GridConstraints(10, 0, 1, 4, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, new Dimension(-1, 100), null, 0, false));
+        itemsLabel1 = new JLabel();
+        itemsLabel1.setText("Items this store carries:");
+        mainPanel.add(itemsLabel1, new GridConstraints(8, 0, 1, 4, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        itemsLabel2 = new JLabel();
+        itemsLabel2.setText("(Click on a \"UPC\" to view that item's page)");
+        mainPanel.add(itemsLabel2, new GridConstraints(9, 0, 1, 4, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
     }
 
     /**
