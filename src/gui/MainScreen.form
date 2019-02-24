@@ -26,7 +26,7 @@
         </constraints>
         <properties>
           <horizontalTextPosition value="0"/>
-          <text value="Search Items"/>
+          <text value="Item Search"/>
         </properties>
       </component>
       <component id="b52fb" class="javax.swing.JButton" binding="searchStoresButton" default-binding="true">
