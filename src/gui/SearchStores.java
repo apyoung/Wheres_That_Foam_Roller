@@ -102,7 +102,8 @@ public class SearchStores extends JFrame {
                 if (target.getSelectedColumn() == 0) {
                     int row = target.getSelectedRow();
                     int column = target.getSelectedColumn();
-                    System.out.println(target.getValueAt(row, column));
+                    StoreView storeView = new StoreView((int) target.getValueAt(row, column));
+                    storeView.setVisible(true);
                 }
             }
         });
@@ -125,7 +126,7 @@ public class SearchStores extends JFrame {
      */
     private void $$$setupUI$$$() {
         mainPanel = new JPanel();
-        mainPanel.setLayout(new GridLayoutManager(8, 2, new Insets(0, 0, 0, 0), -1, -1));
+        mainPanel.setLayout(new GridLayoutManager(8, 2, new Insets(10, 10, 10, 10), -1, -1));
         searchButton = new JButton();
         searchButton.setText("Search");
         mainPanel.add(searchButton, new GridConstraints(5, 0, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
