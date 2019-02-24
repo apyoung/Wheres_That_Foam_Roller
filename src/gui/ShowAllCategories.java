@@ -1,7 +1,6 @@
 package gui;
 
 import com.intellij.uiDesigner.core.GridLayoutManager;
-import helper.QueryDB;
 
 import javax.swing.*;
 import java.awt.*;

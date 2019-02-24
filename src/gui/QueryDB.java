@@ -1,6 +1,4 @@
-package helper;
-
-import gui.MainScreen;
+package gui;
 
 import javax.swing.*;
 import java.sql.*;

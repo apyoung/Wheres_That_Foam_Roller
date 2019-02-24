@@ -2,7 +2,7 @@ package gui;
 
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
-import helper.BuildDB;
+
 
 import javax.swing.*;
 import java.awt.*;

@@ -123,7 +123,7 @@ public class MainScreen extends JFrame {
 		searchItemsButton.setText("Search Items");
 		startPanel.add(searchItemsButton, new GridConstraints(3, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(125, 50), null, 0, false));
 		searchStoresButton = new JButton();
-		searchStoresButton.setText("Search Stores");
+		searchStoresButton.setText("Store Search");
 		startPanel.add(searchStoresButton, new GridConstraints(2, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(125, 50), null, 0, false));
 		showAllStoresButton = new JButton();
 		showAllStoresButton.setText("Show All Stores");
@@ -131,9 +131,6 @@ public class MainScreen extends JFrame {
 		showAllCategoriesButton = new JButton();
 		showAllCategoriesButton.setText("Show All Categories");
 		startPanel.add(showAllCategoriesButton, new GridConstraints(4, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(125, 50), null, 0, false));
-		searchCategoriesButton = new JButton();
-		searchCategoriesButton.setText("Search Categories");
-		startPanel.add(searchCategoriesButton, new GridConstraints(4, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(125, 50), null, 0, false));
 		startPanelLabel = new JLabel();
 		Font startPanelLabelFont = this.$$$getFont$$$(null, Font.BOLD, 12, startPanelLabel.getFont());
 		if (startPanelLabelFont != null)
@@ -146,6 +143,10 @@ public class MainScreen extends JFrame {
 		adminButton = new JButton();
 		adminButton.setText("Admin");
 		startPanel.add(adminButton, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+		searchCategoriesButton = new JButton();
+		searchCategoriesButton.setHorizontalTextPosition(0);
+		searchCategoriesButton.setText("Search Categories");
+		startPanel.add(searchCategoriesButton, new GridConstraints(4, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(125, 50), null, 0, false));
 	}
 
 	/**
