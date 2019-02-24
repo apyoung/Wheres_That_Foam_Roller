@@ -29,12 +29,14 @@ public class DatabaseConnection extends JFrame {
         this(true);
     }
 
+    //TODO Make this frame pull information from MainScreen if it is present
+
     public DatabaseConnection(Boolean createMainScreen) {
         add(dbConnectionPanel);
-        setSize(1000, 350);
+        setSize(800, 350);
         setLocationRelativeTo(null);
-        setResizable(false);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(true);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         connectButton.addActionListener(new ActionListener() {
             @Override
@@ -76,7 +78,7 @@ public class DatabaseConnection extends JFrame {
         dbConnectionPanel = new JPanel();
         dbConnectionPanel.setLayout(new GridLayoutManager(8, 2, new Insets(10, 10, 10, 10), -1, -1));
         urlField = new JTextField();
-        urlField.setText("jdbc:mysql://localhost/?useSSL=false");
+        urlField.setText("jdbc:mysql://localhost/WTFoamroller?autoReconnect=true&useSSL=false");
         urlField.setToolTipText("");
         dbConnectionPanel.add(urlField, new GridConstraints(1, 1, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
         urlLabel = new JLabel();

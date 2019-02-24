@@ -17,8 +17,8 @@ public class ShowAllStores extends JFrame {
 
         String query =
                 "SELECT store.*,company.name AS 'Parent Company' FROM store,company,owns WHERE store.storeid = owns.storeid AND owns.companyname = company.name";
-        QueryDB queryDB = new QueryDB();
-        add(queryDB.getScrollPane(query));
+        // QueryDB queryDB = new QueryDB();
+        add(QueryDB.getScrollPane(query));
     }
 
     {

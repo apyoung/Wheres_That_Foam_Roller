@@ -24,6 +24,7 @@ public class MainScreen extends JFrame {
 	private JButton editConnectionInfoButton;
 	private JButton adminButton;
 
+
 	public MainScreen() {
 		add(startPanel);
 
