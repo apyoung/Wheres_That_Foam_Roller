@@ -18,10 +18,6 @@ public class ItemView extends JFrame {
     private JTextField upcField;
     private JLabel upcLabel;
     private JLabel categoriesLabel;
-    private JTextField streetField;
-    private JTextField cityField;
-    private JTextField zipField;
-    private JTextField stateField;
     private JLabel conditionLabel;
     private JTextField conditionField;
     private JTextField madeInField;

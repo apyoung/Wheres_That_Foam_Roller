@@ -2,23 +2,31 @@ package gui;
 
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
+import helper.QueryDB;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class SearchCategories extends JFrame {
     private JButton backButton;
-    private JPanel panel1;
+    private JPanel mainPanel;
+    private JTextField categoryNameField;
+    private JLabel categoryNameLabel;
+    private JLabel categoriesPanelLabel;
+    private JPanel categoriesPanel;
+    private JButton searchButton;
 
     public SearchCategories() {
-        add(panel1);
+        add(mainPanel);
         setTitle("Search Categories");
         setSize(800, 600);
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        populateCategories();
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -27,6 +35,55 @@ public class SearchCategories extends JFrame {
                 //MainScreen.setVisible(true);
             }
         });
+        searchButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                populateCategories();
+            }
+        });
+    }
+
+    private void populateCategories() {
+        JScrollPane resultScrollPane = getCategoryScrollPane();
+        categoriesPanel.removeAll();
+        categoriesPanel.add(resultScrollPane,
+                new GridConstraints(0,
+                        0,
+                        1,
+                        1,
+                        GridConstraints.ANCHOR_CENTER,
+                        GridConstraints.FILL_BOTH,
+                        GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+                        GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+                        null, null, null, 0, false));
+        categoriesPanel.revalidate();
+    }
+
+    private String getQueryString() {
+        String result = "SELECT Category FROM itemcategory ";
+        if (!categoryNameField.getText().equals("")) {
+            result += "WHERE Category='" + categoryNameField.getText().trim() + "' ";
+        }
+        result += "GROUP BY Category;";
+        return result;
+    }
+
+    private JScrollPane getCategoryScrollPane() {
+        JTable queryJTable = QueryDB.getJTable(getQueryString());
+        queryJTable.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                JTable target = (JTable) e.getSource();
+                if (target.getSelectedColumn() == 0) {
+                    int row = target.getSelectedRow();
+                    String category = target.getValueAt(row, 0).toString();
+                    SearchItems searchItemsFrame = new SearchItems(category);
+                    searchItemsFrame.setVisible(true);
+                }
+            }
+        });
+        queryJTable.setTableHeader(null);
+        return new JScrollPane(queryJTable);
     }
 
     {
@@ -44,18 +101,32 @@ public class SearchCategories extends JFrame {
      * @noinspection ALL
      */
     private void $$$setupUI$$$() {
-        panel1 = new JPanel();
-        panel1.setLayout(new GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
+        mainPanel = new JPanel();
+        mainPanel.setLayout(new GridLayoutManager(5, 2, new Insets(0, 0, 0, 0), -1, -1));
         backButton = new JButton();
         backButton.setText("back");
-        panel1.add(backButton, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        mainPanel.add(backButton, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        categoriesPanel = new JPanel();
+        categoriesPanel.setLayout(new GridLayoutManager(1, 1, new Insets(0, 0, 0, 0), -1, -1));
+        mainPanel.add(categoriesPanel, new GridConstraints(4, 0, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
+        categoryNameLabel = new JLabel();
+        categoryNameLabel.setText("Category Name");
+        mainPanel.add(categoryNameLabel, new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        categoryNameField = new JTextField();
+        mainPanel.add(categoryNameField, new GridConstraints(1, 1, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
+        searchButton = new JButton();
+        searchButton.setText("Search");
+        mainPanel.add(searchButton, new GridConstraints(2, 0, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        categoriesPanelLabel = new JLabel();
+        categoriesPanelLabel.setText("Click on a category to go to that category's page");
+        mainPanel.add(categoriesPanelLabel, new GridConstraints(3, 0, 1, 2, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
     }
 
     /**
      * @noinspection ALL
      */
     public JComponent $$$getRootComponent$$$() {
-        return panel1;
+        return mainPanel;
     }
 
 }
