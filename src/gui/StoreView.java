@@ -107,7 +107,9 @@ public class StoreView extends JFrame {
                 "WHERE storereview.storeid=" + storeID + " " +
                 "AND storereview.reviewid = review.reviewid";
         JTable reviewTable = QueryDB.getJTable(reviewQuery);
-        JScrollPane resultScrollPane = QueryDB.getScrollPane(reviewQuery);
+        reviewTable.getColumnModel().getColumn(1)
+                .setCellRenderer(new WordWrapCellRenderer());
+        JScrollPane resultScrollPane = new JScrollPane(reviewTable);
         reviewsPanel.add(resultScrollPane,
                 new GridConstraints(0,
                         0,
@@ -119,6 +121,22 @@ public class StoreView extends JFrame {
                         GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
                         null, null, null, 0, false));
         reviewsPanel.revalidate();
+    }
+
+    static class WordWrapCellRenderer extends JTextArea implements TableCellRenderer {
+        WordWrapCellRenderer() {
+            setLineWrap(true);
+            setWrapStyleWord(true);
+        }
+
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+            setText(value.toString());
+            setSize(table.getColumnModel().getColumn(column).getWidth(), getPreferredSize().height);
+            if (table.getRowHeight(row) != getPreferredSize().height) {
+                table.setRowHeight(row, getPreferredSize().height);
+            }
+            return this;
+        }
     }
 
     {
