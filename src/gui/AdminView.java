@@ -24,7 +24,7 @@ public class AdminView extends JFrame {
 				0), -1, -1));
 
 		add(adminPanel);
-		setLocationRelativeTo(null);
+		setLocationRelativeTo(super.rootPane);
 		setResizable(false);
 		setSize(300, 300);
 		editS = new JLabel("Query Examples:");

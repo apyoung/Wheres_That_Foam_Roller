@@ -1,5 +1,7 @@
 package helper;
 
+import gui.MainScreen;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -34,6 +36,13 @@ public class BuildDB {
                     "WTFoamroller");
             System.out.println("Sending statement");
             stmt.executeUpdate();
+            stmt.close();
+            conn.close();
+            String[] splitUrl = url.split("/");
+            String newUrl = splitUrl[0]+ "//" + splitUrl[2] + "/wtfoamroller" +
+            splitUrl[3];
+            MainScreen.url = newUrl;
+            conn = DriverManager.getConnection(newUrl, username, password);
             System.out.println("Building sample Database");
             InsertData insertData = new InsertData();
             insertData.build(conn);
@@ -42,8 +51,7 @@ public class BuildDB {
             //ErrorCode 1007 is the error thrown when the database already
             // exists
             if (ex.getErrorCode() == 1007) {
-                InsertData insertData = new InsertData();
-                insertData.build(conn);
+                System.out.println("Database already exists");
             }
         } catch (ClassNotFoundException ce) {
             System.out.println("class not found" + ce.getStackTrace());

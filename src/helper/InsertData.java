@@ -27,7 +27,6 @@ public class InsertData {
                     Statement st = con.createStatement();
                     st.executeUpdate(aTableData);
                     st.close();
-                    System.out.println("Populating tables");
                 } catch (SQLException ex) {
                     if (ex.getErrorCode() == 1050) {
                         System.out.println("Table already exists");
