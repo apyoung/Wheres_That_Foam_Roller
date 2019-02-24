@@ -128,5 +128,4 @@ public class DatabaseConnection extends JFrame {
     public JComponent $$$getRootComponent$$$() {
         return dbConnectionPanel;
     }
-
 }
