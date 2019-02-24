@@ -9,7 +9,10 @@ import java.util.Vector;
 public class QueryDB {
 
     public static JScrollPane getScrollPane(String query) {
+        return new JScrollPane(getJTable(query));
+    }
 
+    public static JTable getJTable(String query) {
         ResultSet resultSet = null;
         Statement statement = null;
         Connection connection = null;
@@ -40,9 +43,9 @@ public class QueryDB {
                 }
                 data.add(vector);
             }
-
-            JScrollPane scrollPane = new JScrollPane(new JTable(data, columnNames));
-            return scrollPane;
+            JTable resultTable = new JTable(data, columnNames);
+            resultTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+            return resultTable;
 
         } catch (Exception e) {
             e.printStackTrace();
