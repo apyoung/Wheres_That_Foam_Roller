@@ -40,7 +40,7 @@ public class SearchStores extends JFrame {
         setSize(1300, 800);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
+        populateStores();
         /**
          * Closes the SearchStores window when the back button is clicked.
          */
@@ -55,24 +55,25 @@ public class SearchStores extends JFrame {
         searchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JScrollPane resultScrollPane = getStoreQueryScrollPane();
-
-                queryResultPanel.removeAll();
-                queryResultPanel.add(resultScrollPane,
-                        new GridConstraints(0,
-                                0,
-                                1,
-                                1,
-                                GridConstraints.ANCHOR_CENTER,
-                                GridConstraints.FILL_BOTH,
-                                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                null, null, null, 0, false));
-                queryResultPanel.revalidate();
-
-                // List selection listener
+                populateStores();
             }
         });
+    }
+
+    private void populateStores() {
+        JScrollPane resultScrollPane = getStoreQueryScrollPane();
+        queryResultPanel.removeAll();
+        queryResultPanel.add(resultScrollPane,
+                new GridConstraints(0,
+                        0,
+                        1,
+                        1,
+                        GridConstraints.ANCHOR_CENTER,
+                        GridConstraints.FILL_BOTH,
+                        GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+                        GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+                        null, null, null, 0, false));
+        queryResultPanel.revalidate();
     }
 
     private String getQueryString() {

@@ -29,11 +29,17 @@ public class SearchItems extends JFrame {
     private JLabel categoryLabel;
 
     public SearchItems() {
+        this("");
+    }
+
+    public SearchItems(String category) {
         add(mainPanel);
         setTitle("Search Items");
         setSize(800, 800);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        categoryField.setText(category);
+        populateItems();
 
         /**
          * Closes the SearchStores window when the back button is clicked.
@@ -49,24 +55,25 @@ public class SearchItems extends JFrame {
         searchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JScrollPane resultScrollPane = getItemQueryScrollPane();
-
-                queryResultPanel.removeAll();
-                queryResultPanel.add(resultScrollPane,
-                        new GridConstraints(0,
-                                0,
-                                1,
-                                1,
-                                GridConstraints.ANCHOR_CENTER,
-                                GridConstraints.FILL_BOTH,
-                                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                                null, null, null, 0, false));
-                queryResultPanel.revalidate();
-
-                // List selection listener
+                populateItems();
             }
         });
+    }
+
+    private void populateItems() {
+        JScrollPane resultScrollPane = getItemQueryScrollPane();
+        queryResultPanel.removeAll();
+        queryResultPanel.add(resultScrollPane,
+                new GridConstraints(0,
+                        0,
+                        1,
+                        1,
+                        GridConstraints.ANCHOR_CENTER,
+                        GridConstraints.FILL_BOTH,
+                        GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+                        GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+                        null, null, null, 0, false));
+        queryResultPanel.revalidate();
     }
 
     private String getQueryString() {

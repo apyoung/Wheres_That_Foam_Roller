@@ -19,7 +19,6 @@ public class MainScreen extends JFrame {
     private JButton searchItemsButton;
     private JButton showAllItemsButton;
     private JButton searchCategoriesButton;
-    private JButton showAllCategoriesButton;
     private JLabel startPanelLabel;
     private JButton editConnectionInfoButton;
     private JButton adminButton;
@@ -42,14 +41,6 @@ public class MainScreen extends JFrame {
                 searchStores.setVisible(true);
             }
         });
-        showAllStoresButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ShowAllStores showAllStores = new ShowAllStores();
-                //dispose();
-                showAllStores.setVisible(true);
-            }
-        });
         searchItemsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -58,28 +49,12 @@ public class MainScreen extends JFrame {
                 searchItems.setVisible(true);
             }
         });
-        showAllItemsButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ShowAllItems showAllItems = new ShowAllItems();
-                //dispose();
-                showAllItems.setVisible(true);
-            }
-        });
         searchCategoriesButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 SearchCategories searchCategories = new SearchCategories();
                 //dispose();
                 searchCategories.setVisible(true);
-            }
-        });
-        showAllCategoriesButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ShowAllCategories showAllCategories = new ShowAllCategories();
-                //dispose();
-                showAllCategories.setVisible(true);
             }
         });
         editConnectionInfoButton.addActionListener(new ActionListener() {
@@ -115,28 +90,13 @@ public class MainScreen extends JFrame {
     private void $$$setupUI$$$() {
         startPanel = new JPanel();
         startPanel.setLayout(new GridLayoutManager(5, 2, new Insets(0, 0, 0, 0), -1, -1));
-        showAllItemsButton = new JButton();
-        showAllItemsButton.setText("Show All Items");
-        startPanel.add(showAllItemsButton, new GridConstraints(3, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(125, 50), null, 0, false));
         searchItemsButton = new JButton();
         searchItemsButton.setHorizontalTextPosition(0);
         searchItemsButton.setText("Item Search");
-        startPanel.add(searchItemsButton, new GridConstraints(3, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(125, 50), null, 0, false));
+        startPanel.add(searchItemsButton, new GridConstraints(3, 0, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(125, 50), null, 0, false));
         searchStoresButton = new JButton();
         searchStoresButton.setText("Store Search");
-        startPanel.add(searchStoresButton, new GridConstraints(2, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(125, 50), null, 0, false));
-        showAllStoresButton = new JButton();
-        showAllStoresButton.setText("Show All Stores");
-        startPanel.add(showAllStoresButton, new GridConstraints(2, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(125, 50), null, 0, false));
-        showAllCategoriesButton = new JButton();
-        showAllCategoriesButton.setText("Show All Categories");
-        startPanel.add(showAllCategoriesButton, new GridConstraints(4, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(125, 50), null, 0, false));
-        startPanelLabel = new JLabel();
-        Font startPanelLabelFont = this.$$$getFont$$$(null, Font.BOLD, 12, startPanelLabel.getFont());
-        if (startPanelLabelFont != null)
-            startPanelLabel.setFont(startPanelLabelFont);
-        startPanelLabel.setText("Choose Search Method:");
-        startPanel.add(startPanelLabel, new GridConstraints(1, 0, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 2, false));
+        startPanel.add(searchStoresButton, new GridConstraints(2, 0, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(125, 50), null, 0, false));
         editConnectionInfoButton = new JButton();
         editConnectionInfoButton.setText("Edit Connection Info");
         startPanel.add(editConnectionInfoButton, new GridConstraints(0, 1, 1, 1, GridConstraints.ANCHOR_NORTHEAST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
@@ -144,8 +104,16 @@ public class MainScreen extends JFrame {
         adminButton.setText("Admin");
         startPanel.add(adminButton, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         searchCategoriesButton = new JButton();
-        searchCategoriesButton.setText("Search Categories");
-        startPanel.add(searchCategoriesButton, new GridConstraints(4, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(125, 50), null, 0, false));
+        searchCategoriesButton.setText("Category Search");
+        startPanel.add(searchCategoriesButton, new GridConstraints(4, 0, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(125, 50), null, 0, false));
+        startPanelLabel = new JLabel();
+        Font startPanelLabelFont = this.$$$getFont$$$(null, Font.BOLD, 12, startPanelLabel.getFont());
+        if (startPanelLabelFont != null)
+            startPanelLabel.setFont(startPanelLabelFont);
+        startPanelLabel.setHorizontalAlignment(0);
+        startPanelLabel.setHorizontalTextPosition(0);
+        startPanelLabel.setText("Choose Search Method:");
+        startPanel.add(startPanelLabel, new GridConstraints(1, 0, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
     }
 
     /**
