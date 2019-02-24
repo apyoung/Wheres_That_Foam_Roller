@@ -82,7 +82,6 @@ public class SearchStores extends JFrame {
                         "WHERE store.storeid = owns.storeid " +
                         "AND owns.companyname = company.name ";
 
-        System.out.println(storeIDField.getText());
         if (!storeIDField.getText().equals("")) {
             result += "AND store.storeid = '" + storeIDField.getText().trim() + "' ";
         }

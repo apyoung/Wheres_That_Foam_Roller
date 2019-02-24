@@ -120,7 +120,7 @@ public class MainScreen extends JFrame {
         startPanel.add(showAllItemsButton, new GridConstraints(3, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(125, 50), null, 0, false));
         searchItemsButton = new JButton();
         searchItemsButton.setHorizontalTextPosition(0);
-        searchItemsButton.setText("Search Items");
+        searchItemsButton.setText("Item Search");
         startPanel.add(searchItemsButton, new GridConstraints(3, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(125, 50), null, 0, false));
         searchStoresButton = new JButton();
         searchStoresButton.setText("Store Search");
