@@ -123,6 +123,7 @@ public class StoreView extends JFrame {
         reviewsPanel.revalidate();
     }
 
+    // Found on stack exchange here: https://stackoverflow.com/questions/37768335/how-to-word-wrap-inside-a-jtable-row
     static class WordWrapCellRenderer extends JTextArea implements TableCellRenderer {
         WordWrapCellRenderer() {
             setLineWrap(true);
