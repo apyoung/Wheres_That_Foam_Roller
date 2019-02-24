@@ -39,12 +39,12 @@ public class BuildDB {
             insertData.build(conn);
         } catch (SQLException ex) {
 
-            //TODO What is this error code?
+            //ErrorCode 1007 is the error thrown when the database already
+            // exists
             if (ex.getErrorCode() == 1007) {
                 InsertData insertData = new InsertData();
                 insertData.build(conn);
             }
-            System.out.println("Oops\n" + ex.getErrorCode() + ex);
         } catch (ClassNotFoundException ce) {
             System.out.println("class not found" + ce.getStackTrace());
         } finally {
